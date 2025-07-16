@@ -37,15 +37,15 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         ConfigBox: Parsed YAML config
     """
     try:
-        print("Current Working Directory yaml:",path_to_yaml)
-        print("Current Directory:", os.getcwd())
-        print("Files:", os.listdir())
-        print("Config Folder Contents:", os.listdir("config") if os.path.exists("config") else "Config folder missing")
+        #print("Current Working Directory yaml:",path_to_yaml)
+        #print("Current Directory:", os.getcwd())
+        #print("Files:", os.listdir())
+        #print("Config Folder Contents:", os.listdir("config") if os.path.exists("config") else "Config folder missing")
 
         with open(Path(str(path_to_yaml).replace('\\', '/'))) as yaml_file:
             content = yaml.safe_load(yaml_file)
-            print("DEBUG YAML path_to_yaml:", path_to_yaml)
-            print("DEBUG YAML content:", content, "TYPE:", type(content))
+            #print("DEBUG YAML path_to_yaml:", path_to_yaml)
+            #print("DEBUG YAML content:", content, "TYPE:", type(content))
 
         if content is None:
             raise ValueError(f"YAML file is empty: {path_to_yaml}")
@@ -139,7 +139,7 @@ def get_size(path:Path) ->str:
             str: Size in kb 
 
     '''
-    size_in_kb=round(os.path.getsize(path/1024))
+    size_in_kb=round(os.path.getsize(path)/1024)
     return f"~{size_in_kb} KB"
 
 def decodeImage(imgstring,filename):
